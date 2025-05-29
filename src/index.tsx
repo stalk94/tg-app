@@ -33,6 +33,7 @@ export function App() {
             <video
                 src="https://files.catbox.moe/vzzsu6.mp4"          // без ../public — путь идёт из public/
                 autoPlay
+                muted
                 playsInline
                 loop
                 style={{ width: '100%', borderRadius: 8 }}

@@ -7,6 +7,7 @@ import { initTelegram, WebApp } from "./tg";
 export function App() {
     React.useEffect(() => {
         const tg = initTelegram();
+
         if (!tg) {
             console.warn("Telegram SDK не инициализирован");
             return;
@@ -16,6 +17,7 @@ export function App() {
         WebApp.MainButton.setText("Записаться");
         WebApp.MainButton.show();
         WebApp.MainButton.onClick(() => {
+            WebApp.user?.id
             alert(`Спасибо, ${WebApp.user?.first_name ?? "гость"}!`);
         });
     }, []);

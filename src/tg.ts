@@ -57,8 +57,11 @@ export function initTelegram(): TelegramWebApp {
     if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
         tg = window.Telegram.WebApp as TelegramWebApp;
         tg.ready();
+        tg.expand();
+
         return tg;
     }
+    
     return undefined;
 }
 

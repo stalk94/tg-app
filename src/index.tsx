@@ -25,8 +25,14 @@ export function App() {
 
     return (
         <div style={{ padding: 20 }}>
-            <h2>Добро пожаловать, {WebApp.user?.first_name ?? "Гость"}</h2>
-            <p>Это Telegram Web App. Нажмите кнопку ниже.</p>
+            <video
+                src="/test.mp4"          // без ../public — путь идёт из public/
+                autoPlay
+                muted
+                playsInline
+                loop
+                style={{ width: '100%', borderRadius: 8 }}
+            />
         </div>
     );
 }

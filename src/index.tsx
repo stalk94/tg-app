@@ -5,6 +5,8 @@ import { initTelegram, WebApp } from "./tg";
 
 
 export function App() {
+    const [bgColor, setBgColor] = React.useState('#534f58');
+
     React.useEffect(() => {
         const tg = initTelegram();
 
@@ -20,13 +22,16 @@ export function App() {
             WebApp.user?.id
             alert(`Спасибо, ${WebApp.user?.first_name ?? "гость"}!`);
         });
+
+        const themeBg = tg?.themeParams?.bg_color ?? '#534f58';
+        setBgColor(themeBg);
     }, []);
 
 
     return (
-        <div style={{ padding: 20 }}>
+        <div style={{ backgroundColor: bgColor, minHeight: '100vh', padding: 20 }}>
             <video
-                src="/test.mp4"          // без ../public — путь идёт из public/
+                src="https://files.catbox.moe/vzzsu6.mp4"          // без ../public — путь идёт из public/
                 autoPlay
                 muted
                 playsInline

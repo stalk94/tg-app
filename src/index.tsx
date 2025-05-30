@@ -14,13 +14,13 @@ export function App() {
             console.warn("Telegram SDK не инициализирован");
             return;
         }
-
+        
         WebApp.expand();
         WebApp.MainButton.setText("Записаться");
         WebApp.MainButton.show();
         WebApp.MainButton.onClick(() => {
             WebApp.user?.id
-            alert(`Спасибо, ${WebApp.user?.first_name ?? "гость"}!`);
+            alert(`Спасибо, ${WebApp.user?.first_name ?? WebApp.user?.id}!`);
         });
 
         const themeBg = tg?.themeParams?.bg_color ?? '#534f58';
@@ -29,15 +29,10 @@ export function App() {
 
 
     return (
-        <div style={{ backgroundColor: bgColor, minHeight: '100vh', padding: 20 }}>
-            <video
-                src="https://files.catbox.moe/vzzsu6.mp4"          // без ../public — путь идёт из public/
-                autoPlay
-                muted
-                playsInline
-                loop
-                style={{ width: '100%', borderRadius: 8 }}
-            />
+        <div style={{ backgroundColor: bgColor, minHeight: '100%' }}>
+            <pre>
+                { JSON.stringify(WebApp.user, null, 2) }
+            </pre>
         </div>
     );
 }

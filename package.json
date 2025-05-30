@@ -5,20 +5,30 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "node build/index.js",
+    "server": "nodemon",
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "build:server": "tsc -p tsconfig.server.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@supabase/supabase-js": "^2.49.8",
     "@twa-dev/sdk": "^8.0.2",
     "@vitejs/plugin-react": "^4.5.0",
     "dotenv": "^16.5.0",
+    "express": "^5.1.0",
     "node-telegram-bot-api": "^0.66.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "vite": "^6.3.5"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2"
   }
 }

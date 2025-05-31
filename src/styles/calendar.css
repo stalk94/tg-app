@@ -1,0 +1,38 @@
+/* Фон ячеек */
+.rbc-calendar {
+    background-color: var(--rbc-bg);
+    color: var(--rbc-text);
+}
+/* 	Ячейки дней недели в шапке календаря (Пн, Вт, Ср...) */
+.rbc-header {
+    background-color: var(--rbc-header-bg);
+    color: var(--rbc-text);
+    font-weight: bold;
+}
+
+/* Ячейка, соответствующая текущему дню — можно выделить цветом */
+.rbc-today {
+    background-color: rgba(30, 144, 255, 0.1);
+}
+/* Ячейки вне текущего месяца (в соседние недели) */
+.rbc-off-range-bg {
+    background-color: rgba(68, 68, 69, 0.123);
+}
+
+/* неделя row */
+.rbc-month-row + .rbc-month-row {
+    border-top: 1px solid #ddd;;
+}
+/* день cell */
+.rbc-day-bg + .rbc-day-bg {
+    border-left: 1px solid #ddd;
+}
+
+/* Само событие: фон, текст, размеры — всё тут */
+.rbc-event {
+    background-color: var(--rbc-event-bg) !important;
+    color: var(--rbc-event-color) !important;
+    border-radius: 6px;
+    padding: 2px 4px;
+    font-size: 13px;
+}

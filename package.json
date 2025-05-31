@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node build/index.js",
     "server": "nodemon",
+    "tunnel": "node server/utils/ngrok.js",
     "dev": "vite",
     "build": "vite build",
     "build:server": "tsc -p tsconfig.server.json"
@@ -16,19 +17,29 @@
   "license": "ISC",
   "dependencies": {
     "@supabase/supabase-js": "^2.49.8",
-    "@twa-dev/sdk": "^8.0.2",
-    "@vitejs/plugin-react": "^4.5.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "moment": "^2.30.1",
     "node-telegram-bot-api": "^0.66.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "statekit-lite": "^1.0.6",
     "vite": "^6.3.5"
   },
   "devDependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.1.0",
+    "@twa-dev/sdk": "^8.0.2",
+    "@types/express": "^5.0.2",
     "@types/react": "^19.1.6",
+    "@types/react-big-calendar": "^1.16.2",
     "@types/react-dom": "^19.1.5",
+    "@vitejs/plugin-react": "^4.5.0",
+    "ngrok": "^5.0.0-beta.2",
     "nodemon": "^3.1.10",
-    "ts-node": "^10.9.2"
+    "react-big-calendar": "^1.19.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }

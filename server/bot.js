@@ -2,8 +2,8 @@ require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
 
 
-const TOKEN = process.env.TOKEN;
-const WEB_APP_URL = process.env.URL; // сюда вставь свой URL
+const TOKEN = process.env.BOT_TOKEN;
+const WEB_APP_URL = 'https://4c30-2003-ce-4740-5a90-245f-bfda-74e2-259d.ngrok-free.app'; // сюда вставь свой URL
 const bot = new TelegramBot(TOKEN, { polling: true });
 
 
@@ -15,7 +15,7 @@ fetch(`https://api.telegram.org/bot${TOKEN}/setChatMenuButton`, {
 			type: "web_app",
 			text: "Автошкола",
 			web_app: {
-				url: process.env.URL
+				url: WEB_APP_URL
 			}
 		}
 	})

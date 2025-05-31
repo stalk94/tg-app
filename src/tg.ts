@@ -1,4 +1,12 @@
 type ThemeParams = {
+    accent_text_color: string;
+    bottom_bar_bg_color: string;
+    destructive_text_color: string;
+    header_bg_color: string;
+    section_bg_color: string;
+    section_header_text_color: string;
+    section_separator_color: string;
+    subtitle_text_color: string;
     bg_color: string;
     button_color: string;
     button_text_color: string;
@@ -36,7 +44,7 @@ type BackButtonType = {
     hide: () => void;
     onClick: (cb: () => void) => void;
 }
-type TelegramWebApp = {
+export type TelegramWebApp = {
     initData: string;
     initDataUnsafe: InitDataUnsafe;
     MainButton: MainButtonType;
@@ -68,6 +76,14 @@ export function initTelegram(): TelegramWebApp {
 export const WebApp = {
     get instance(): TelegramWebApp | null {
         return tg;
+    },
+    
+    get initData(): InitDataUnsafe | null {
+        return tg?.initDataUnsafe ?? null;
+    },
+
+    get initDataRaw(): string | null {
+        return tg?.initData ?? null;
     },
 
     get user(): User | null {

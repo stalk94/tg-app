@@ -1,38 +1,47 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { initTelegram, WebApp } from "./tg";
-
-
+import { initTelegram, WebApp, TelegramWebApp } from "./tg";
+import { context } from './context';
+import Calendar from './component/calendar';
 
 export function App() {
-    const [bgColor, setBgColor] = React.useState('#534f58');
+    const [tg, settg] = React.useState<TelegramWebApp>();
+    const [authorise, setAuthorise] = React.useState(false);
+    const [error, setError] = React.useState();
 
+    const fetchTg =()=> {
+        fetch('/tg', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': WebApp.initDataRaw ?? ''
+            },
+            body: JSON.stringify({
+                initData: WebApp.initDataRaw
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.error) setError(data.error);
+            else if(data) setAuthorise(true);
+        });
+    }
     React.useEffect(() => {
         const tg = initTelegram();
+        settg(tg);
 
         if (!tg) {
             console.warn("Telegram SDK не инициализирован");
             return;
         }
         
-        WebApp.expand();
-        WebApp.MainButton.setText("Записаться");
-        WebApp.MainButton.show();
-        WebApp.MainButton.onClick(() => {
-            WebApp.user?.id
-            alert(`Спасибо, ${WebApp.user?.first_name ?? WebApp.user?.id}!`);
-        });
-
-        const themeBg = tg?.themeParams?.bg_color ?? '#534f58';
-        setBgColor(themeBg);
+        if(false) fetchTg();
     }, []);
 
-
+    
     return (
-        <div style={{ backgroundColor: bgColor, minHeight: '100%' }}>
-            <pre>
-                { JSON.stringify(WebApp.user, null, 2) }
-            </pre>
+        <div style={{ backgroundColor: tg?.themeParams?.bg_color??'#534f58', minHeight: '100%' }}>
+            <Calendar />
         </div>
     );
 }
